@@ -76,72 +76,72 @@ func New(logDir, logOldDir,logPre,logSuf string) *DLogger {
 }
 
 func (dlog *DLogger) Print(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_INFO, fmt.Sprint(v...))
+	dlog.outPut(2, LOG_LVL_INFO, fmt.Sprint(v...))
 }
 
 func (dlog *DLogger) Printf(format string, v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_INFO, fmt.Sprintf(format, v ...))
+	dlog.outPut(2, LOG_LVL_INFO, fmt.Sprintf(format, v ...))
 }
 
 func (dlog *DLogger) Println(v ...interface{}) {
 
-	dlog.OutPut(2, LOG_LVL_INFO, fmt.Sprintln(v...))
+	dlog.outPut(2, LOG_LVL_INFO, fmt.Sprintln(v...))
 }
 
 func (dlog *DLogger) Debug(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_DEBUG, fmt.Sprint(v...))
+	dlog.outPut(2, LOG_LVL_DEBUG, fmt.Sprint(v...))
 }
 
 func (dlog *DLogger) Debugf(format string, v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_DEBUG, fmt.Sprintf(format, v ...))
+	dlog.outPut(2, LOG_LVL_DEBUG, fmt.Sprintf(format, v ...))
 }
 
 func (dlog *DLogger) Debugln(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_DEBUG, fmt.Sprintln(v...))
+	dlog.outPut(2, LOG_LVL_DEBUG, fmt.Sprintln(v...))
 }
 
 func (dlog *DLogger) Warn(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_WARN, fmt.Sprint(v...))
+	dlog.outPut(2, LOG_LVL_WARN, fmt.Sprint(v...))
 }
 
 func (dlog *DLogger) Warnf(format string, v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_WARN, fmt.Sprintf(format, v ...))
+	dlog.outPut(2, LOG_LVL_WARN, fmt.Sprintf(format, v ...))
 }
 
 func (dlog *DLogger) Warnln(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_WARN, fmt.Sprintln(v...))
+	dlog.outPut(2, LOG_LVL_WARN, fmt.Sprintln(v...))
 }
 
 func (dlog *DLogger) Error(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_ERROR, fmt.Sprint(v...))
+	dlog.outPut(2, LOG_LVL_ERROR, fmt.Sprint(v...))
 }
 
 func (dlog *DLogger) Errorf(format string, v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_ERROR, fmt.Sprintf(format, v ...))
+	dlog.outPut(2, LOG_LVL_ERROR, fmt.Sprintf(format, v ...))
 }
 
 func (dlog *DLogger) Errorln(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_ERROR, fmt.Sprintln(v...))
+	dlog.outPut(2, LOG_LVL_ERROR, fmt.Sprintln(v...))
 }
 
 func (dlog *DLogger) Fatal(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_FATAL, fmt.Sprint(v...))
+	dlog.outPut(2, LOG_LVL_FATAL, fmt.Sprint(v...))
 	os.Exit(1)
 }
 
 func (dlog *DLogger) Fatalf(format string, v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_FATAL, fmt.Sprintf(format, v ...))
+	dlog.outPut(2, LOG_LVL_FATAL, fmt.Sprintf(format, v ...))
 	os.Exit(1)
 }
 
 func (dlog *DLogger) Fatalln(v ...interface{}) {
-	dlog.OutPut(2, LOG_LVL_FATAL, fmt.Sprintln(v...))
+	dlog.outPut(2, LOG_LVL_FATAL, fmt.Sprintln(v...))
 	os.Exit(1)
 }
 
 func (dlog *DLogger) Panic(v ...interface{}) {
 	s := fmt.Sprint(v...)
-	dlog.OutPut(2, LOG_LVL_PANIC, s)
+	dlog.outPut(2, LOG_LVL_PANIC, s)
 	panic(s)
 }
 
@@ -222,7 +222,7 @@ func (dlog *DLogger) GetMaxByte() int64 {
 }
 
 // 输出到日志文件
-func (dlog *DLogger) OutPut(calldepth int, loglvl int, content string) error {
+func (dlog *DLogger) outPut(calldepth int, loglvl int, content string) error {
 	dlog.mutex.Lock()
 	defer dlog.mutex.Unlock()
 
