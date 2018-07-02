@@ -77,3 +77,65 @@ func main() {
 	fmt.Println("------------- End Test ---------------")
 }
 ```
+
+内部函数的简单使用:
+```
+package main
+
+import (
+	"fmt"
+	"github.com/dzhenquan/dlog"
+)
+
+func main() {
+	//当前存放日志的目录      就日志文件目录       日志文件前缀  日志文件后缀(默认log)
+	log := dlog.New("./log", "./old_log", "test", "")
+
+	logDir1 := log.GetLogDir()   				// 获取保存日志文件的目录
+	fmt.Println("logDir1:", logDir1)
+
+	log.SetLogDir("./dai")					// 设置保存日志文件的目录
+	logDir2 := log.GetLogDir()
+	fmt.Printf("logDir2: %s\n\n", logDir2)
+
+
+	logOldDir1 := log.GetLogOldDir()			// 获取保存日志文件的旧目录
+	fmt.Println("logOldDir1:", logOldDir1)
+
+	log.SetLogOldDir("./old_dai")		// 设置保存日志文件的旧目录
+	logOldDir2 := log.GetLogOldDir()
+	fmt.Printf("logOldDir2: %s\n\n", logOldDir2)
+
+
+	logPre1 := log.GetPrefix()					// 获取日志文件的前缀名
+	fmt.Println("logPre1:", logPre1)
+
+	log.SetPrefix("test")					// 设置日志文件的前缀名
+	logPre2 := log.GetPrefix()
+	fmt.Printf("logPre2: %s\n\n", logPre2)
+
+
+	logSuf1 := log.GetSuffix()					// 获取日志文件的后缀名
+	fmt.Println("logSuf1:", logSuf1)
+
+	log.SetSuffix("txt")
+	logSuf2 := log.GetSuffix()					// 设置日志文件的后缀名
+	fmt.Printf("logSuf2: %s\n\n", logSuf2)
+
+
+	logMaxLine1 := log.GetMaxLine()				// 获取日志文件的最大行数(默认10000行)
+	fmt.Println("logMaxLine1:", logMaxLine1)
+
+	log.SetMaxLine(99)
+	logMaxLine2 := log.GetMaxLine()				// 设置日志文件的最大行数
+	fmt.Printf("logMaxLine2: %d\n\n", logMaxLine2)
+
+
+	logMaxByte1 := log.GetMaxByte()				// 获取日志文件的最大字节数(默认50M)
+	fmt.Println("logMaxByte1:", logMaxByte1)
+
+	log.SetMaxByte(100*1024*1024)			// 设置日志文件的最大字节数
+	logMaxByte2 := log.GetMaxByte()
+	fmt.Printf("logMaxByte2: %d\n\n", logMaxByte2)
+}
+```
