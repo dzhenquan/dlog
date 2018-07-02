@@ -177,6 +177,20 @@ func (dlog *DLogger) SetSuffix(suffix string) {
 	dlog.logSuf = suffix
 }
 
+// 设置日志文件的最大行数
+func (dlog *DLogger) SetMaxLine(line int64) {
+	for i := 0; i < LOG_LVL_MAX; i++ {
+		dlog.dlogLvl[i].logMaxLine = line
+	}
+}
+
+// 设置日志文件的最大字节数
+func (dlog *DLogger) SetMaxByte(byte int64) {
+	for i := 0; i < LOG_LVL_MAX; i++ {
+		dlog.dlogLvl[i].logMaxByte = byte
+	}
+}
+
 // 获取保存日志文件的目录
 func (dlog *DLogger) GetLogDir() string {
 	return dlog.logDir
@@ -195,6 +209,16 @@ func (dlog *DLogger) GetPrefix() string {
 // 获取日志文件的后缀名
 func (dlog *DLogger) GetSuffix() string {
 	return dlog.logSuf
+}
+
+// 获取日志文件的最大行数
+func (dlog *DLogger) GetMaxLine() int64 {
+	return dlog.dlogLvl[0].logMaxLine
+}
+
+// 获取日志文件的最大字节数
+func (dlog *DLogger) GetMaxByte() int64 {
+	return dlog.dlogLvl[0].logMaxByte
 }
 
 // 输出到日志文件
