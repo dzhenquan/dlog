@@ -58,7 +58,7 @@ func testError(log *dlog.DLogger) {
 
 func main() {
 	//当前存放日志的目录      就日志文件目录       日志文件前缀  日志文件后缀(默认log)
-	log := dlog.New("./log", "./old_log", "test", "")  //首先创建一个日志对象
+	log := dlog.NewDLogger("./log", "./old_log", "test", "")  //首先创建一个日志对象
 
 	fmt.Println("------------- Start Test ---------------")
 
@@ -89,7 +89,7 @@ import (
 
 func main() {
 	//当前存放日志的目录      就日志文件目录       日志文件前缀  日志文件后缀(默认log)
-	log := dlog.New("./log", "./old_log", "test", "")
+	log := dlog.NewDLogger("./log", "./old_log", "test", "")
 
 	logDir1 := log.GetLogDir()   				// 获取保存日志文件的目录
 	fmt.Println("logDir1:", logDir1)

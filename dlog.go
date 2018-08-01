@@ -1,7 +1,6 @@
 package dlog
 
 import (
-	"syscall"
 	"sync"
 	"os"
 	"time"
@@ -15,11 +14,11 @@ type DLogger struct {
 	logOldDir	string			// 旧日志文件存放目录
 	logPre 		string			// 日志文件前缀
 	logSuf 		string			// 日志文件后缀
-	dlogLvl		[LOG_LVL_MAX]DLogLevel
+	dlogLvl		[LOG_LVL_MAX]dlogLevel
 	mutex 		*sync.Mutex
 }
 
-type DLogLevel struct {
+type dlogLevel struct {
 	logLine		int64			// 日志文件行数
 	logByte 	int64			// 日志文件字节数
 	logCount 	int64			// 日志文件数
@@ -27,7 +26,7 @@ type DLogLevel struct {
 	logMaxByte	int64			// 日志文件最大字节数
 }
 
-func New(logDir, logOldDir,logPre,logSuf string) *DLogger {
+func NewDLogger(logDir, logOldDir,logPre,logSuf string) *DLogger {
 	if len(logDir) <= 0 {
 		logDir = "."
 	}
@@ -48,6 +47,7 @@ func New(logDir, logOldDir,logPre,logSuf string) *DLogger {
 
 	logMaxByte := LOG_MAX_BYTE
 
+	/*
 	if err := syscall.Access(logDir, syscall.O_RDWR); err != nil {
 		return nil
 	}
@@ -55,6 +55,7 @@ func New(logDir, logOldDir,logPre,logSuf string) *DLogger {
 	if err := syscall.Access(logOldDir, syscall.O_RDWR); err != nil {
 		return nil
 	}
+	*/
 
 	dlogger := &DLogger{
 		logDir:logDir,
