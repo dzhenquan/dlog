@@ -9,6 +9,30 @@ dlog 是一个用于保存日志文件，简单而又多功能的工具,由于�
 ```
 git clone https://github.com/dzhenquan/dlog.git
 ```
+生成日志文件格式如下:  
+```
+[root@localhost log]# tree
+.
+├── fts_debug_current.log
+└── fts_info_current.log
+
+0 directories, 2 files
+[root@localhost log]#
+```
+```
+[root@localhost old_log]# tree
+.
+├── fts_info_20180725_000.log
+├── fts_info_20180725_001.log
+├── fts_info_20180725_002.log
+├── fts_info_20180726_000.log
+├── fts_info_20180726_001.log
+├── fts_info_20180726_002.log
+└── fts_info_20180726_003.log
+
+0 directories, 7 files
+[root@localhost old_log]#
+```
 
 简单使用方法如下：
 ```
@@ -139,3 +163,4 @@ func main() {
 	fmt.Printf("logMaxByte2: %d\n\n", logMaxByte2)
 }
 ```
+
